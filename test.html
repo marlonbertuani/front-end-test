@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Front End Test</title>
+    <style>
+        /* layout principal */
+        body {
+            display: flex;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* container com padding e margem */
+        .container {
+            display: flex;
+            width: 97%;
+            height: 97%;
+            border: 2px solid rgb(150, 150, 150);
+            position: relative;
+        }
+
+        /* coluna lateral esquerda (sidebar) */
+        .sidebar {
+            background-color: rgb(200, 200, 200);
+            width: 20%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            border-right: 3px solid rgb(150, 150, 150);
+            position: relative;
+        }
+
+        /* area de "Quantity" no centro */
+        .quantity-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background-color: #b0b0b0;
+            padding-top: 10px;
+            padding-bottom: 10px;
+            width: 100%;
+            border-top: 2px solid rgb(150, 150, 150);
+            border-bottom: 2px solid rgb(150, 150, 150);
+            text-align: center;
+        }
+
+        /* botao de adicionar quadrado */
+        .add-button {
+            background-color: #d3d3d3;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 10px;
+            border: 2px solid rgb(150, 150, 150);
+        }
+
+        /* titulo de quantidade */
+        .quantity-label {
+            font-size: x-large;
+        }
+
+        /* principal com os quadrados */
+        .main-content {
+            width: 80%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: rgb(216, 216, 216);
+            overflow-y: auto;
+            flex-grow: 1;
+        }
+
+        /* quadrados gerados */
+        .square {
+            background-color: #a9a9a9;
+            width: 90%;
+            padding: 10px;
+            margin-top: 3%;
+            color: rgb(0, 0, 0);
+            font-size: 24px;
+            text-align: center;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            border: 2px solid rgb(150, 150, 150);
+        }
+
+        /* bola do quadrado gerado */
+        .number-ball {
+            background-color: rgb(200, 200, 200);
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: black;
+            font-size: 24px;
+            font-weight: bold;
+            border: 2px solid rgb(150, 150, 150);
+        }
+
+        /* OBJ1 e OBJ3 */
+        .obj1,
+        .obj3 {
+            width: 80px;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: rgb(200, 200, 200);
+            color: rgb(0, 0, 0);
+            font-weight: bold;
+            position: absolute;
+            bottom: 0;
+        }
+
+        .obj1 {
+            left: 0px;
+            border-top: 2px solid rgb(150, 150, 150);
+            border-right: 2px solid rgb(150, 150, 150);
+        }
+
+        .obj3 {
+            right: 0px;
+            border-top: 2px solid rgb(150, 150, 150);
+            border-left: 2px solid rgb(150, 150, 150);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <div class="quantity-container">
+                <div class="quantity-label">Quantity</div>
+                <button class="add-button" onclick="addSquare()">Type here</button>
+            </div>
+            <div class="obj1">OBJ1</div>
+        </div>
+
+        <div class="main-content" id="square-container">
+            <!-- dinamic -->
+        </div>
+        <div class="obj3">OBJ3</div>
+    </div>
+
+    <script>
+        let count = 0;
+
+        function addSquare() {
+            count++;
+            const squareContainer = document.getElementById("square-container");
+            const newSquare = document.createElement("div");
+            newSquare.className = "square";
+            const numberBall = document.createElement("div");
+            numberBall.className = "number-ball";
+            numberBall.textContent = count;
+
+            newSquare.appendChild(numberBall);
+            squareContainer.appendChild(newSquare);
+        }
+    </script>
+</body>
+
+</html>
